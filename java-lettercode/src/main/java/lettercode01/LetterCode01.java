@@ -1,3 +1,5 @@
+package lettercode01;
+
 public class LetterCode01 {
     /**
      *
