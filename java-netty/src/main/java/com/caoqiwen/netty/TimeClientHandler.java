@@ -23,7 +23,6 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         String body = (String) msg;
         logger.info("this body is:" + body + "and this count is" + ++count);
-
     }
 
     @Override
@@ -35,6 +34,4 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
             ctx.writeAndFlush(firstMessage);
         }
     }
-
-
 }

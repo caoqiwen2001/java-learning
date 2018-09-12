@@ -1,4 +1,4 @@
-package com.caoqiwen.netty;
+package com.caoqiwen.nettyIdle;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,10 +8,13 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 
-public class TimeServer {
+import java.util.concurrent.TimeUnit;
+
+public class HeartBeatServer {
 
     public void bind(int port) {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -19,7 +22,7 @@ public class TimeServer {
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).
-                    option(ChannelOption.SO_BACKLOG, 1024).childHandler(new ChildChannelHandler());
+                    option(ChannelOption.SO_BACKLOG, 1024).childHandler(new HeartBeatServer.ChildChannelHandler());
             ChannelFuture f = bootstrap.bind(port).sync();
             f.channel().closeFuture().sync();
         } catch (Exception ex) {
@@ -36,7 +39,9 @@ public class TimeServer {
 
         @Override
         protected void initChannel(SocketChannel socketChannel) throws Exception {
-            socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024)).addLast(new StringDecoder()).addLast(new TimeServerHandler());
+            socketChannel.pipeline().addLast(new IdleStateHandler(5, 0, 0, TimeUnit.MILLISECONDS))
+                    .addLast(new StringDecoder()).addLast(new StringEncoder())
+                    .addLast(new HeartBeatServerHandler());
         }
     }
 }
