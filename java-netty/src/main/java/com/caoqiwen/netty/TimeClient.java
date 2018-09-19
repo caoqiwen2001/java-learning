@@ -29,6 +29,7 @@ public class TimeClient {
             );
             ChannelFuture future = bootstrap.connect(host, port).sync();
             future.channel().closeFuture().sync();
+
         } finally {
             group.shutdownGracefully();
         }
