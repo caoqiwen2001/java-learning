@@ -5,12 +5,13 @@ import com.caoqiwen.nettyCodec.protocol.NettyEncoder;
 import com.caoqiwen.nettyCodec.protocol.NettyRequest;
 import com.caoqiwen.nettyCodec.protocol.NettyResponse;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,8 +48,8 @@ public class HeartBeatServer {
 
         @Override
         protected void initChannel(SocketChannel socketChannel) throws Exception {
-            socketChannel.pipeline().addLast(new IdleStateHandler(5, 0, 0, TimeUnit.SECONDS)).
-                    addLast(new NettyDecoder(NettyRequest.class)).addLast(new NettyEncoder(NettyResponse.class)).addLast(trigger)
+            socketChannel.pipeline().addLast(new IdleStateHandler(5, 0, 0, TimeUnit.SECONDS)).addLast(trigger).
+                    addLast(new NettyDecoder(NettyRequest.class)).addLast(new NettyEncoder(NettyResponse.class))
                     .addLast(new HeartBeatServerHandler());
         }
     }

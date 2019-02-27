@@ -19,13 +19,9 @@ import java.util.concurrent.CountDownLatch;
 public class HeartBeatClientHandler extends SimpleChannelInboundHandler<NettyResponse> {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(HeartBeatsClient.class);
-
-    private int currentTime = 0;
     private Channel channel;
-
     private static final ByteBuf HEARTBEAT_SEQUENCE = Unpooled.unreleasableBuffer(Unpooled.copiedBuffer("Heartbeat",
             CharsetUtil.UTF_8));
-
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
@@ -39,6 +35,8 @@ public class HeartBeatClientHandler extends SimpleChannelInboundHandler<NettyRes
         System.out.println("激活时间是：" + new Date());
         System.out.println("HeartBeatClientHandler channelActive");
         ctx.fireChannelActive();
+
+
     }
 
     @Override
