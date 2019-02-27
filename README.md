@@ -10,7 +10,6 @@
 
 **点击相应的模块能看到每个目录的说明文档**
 
-- [blogs](/blogs):博客文档
 - [java-base](/java-base):Java 基础巩固模块的 Java 源码
 - [java-multithread](/java-multithread):多线程模块的 Java 源码
 - [java-container](/java-container):容器类模块的 Java 源码
