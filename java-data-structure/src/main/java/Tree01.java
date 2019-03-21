@@ -1,3 +1,9 @@
+import javax.xml.soap.Node;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * 二叉树测试
  *
@@ -34,7 +40,6 @@ public final class Tree01 {
             this.right = right;
         }
     }
-
 
     /**
      * 二叉树前序遍历
@@ -82,6 +87,41 @@ public final class Tree01 {
 
 
     /**
+     * 求二叉树层序遍历，保存在List<List<Integer>>中
+     * 用一个临时变量表示根节点的宽度 这种方法很巧妙
+     */
+
+    public static List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        Queue queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        List<List<Integer>> rootList = new ArrayList<>();
+        List<Integer> t = new ArrayList<>();
+        int width = 1;//默认为1层
+        while (!queue.isEmpty()) {
+            TreeNode node = (TreeNode) queue.poll();
+            t.add(node.data);
+            width--;
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+            if (width == 0) {
+                rootList.add(t);
+                t = new ArrayList<>();
+                width = queue.size();
+            }
+        }
+        return rootList;
+    }
+
+
+    /**
      * 求二叉树的高度
      *
      * @param root
@@ -122,5 +162,6 @@ public final class Tree01 {
         preOrder(treeNodeRoot);
         midOrder(treeNodeRoot);
         postOrder(treeNodeRoot);
+        levelOrder(treeNodeRoot);
     }
 }
