@@ -58,6 +58,7 @@
         <module>java-design</module>
         <module>java-netty</module>
         <module>java-netty</module>
+        <module>java-data-structure</module>
     </modules>
 
     <dependencyManagement>
