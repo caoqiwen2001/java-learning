@@ -24,7 +24,6 @@ public class Array05 {
 
     public static void main(String[] args) {
         String s = "aa";
-//        System.out.println(longestPalindrome(s));
         Array05 array05 = new Array05();
         System.out.println(array05.longestPalindrome(s));
 
