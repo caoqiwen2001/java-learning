@@ -6,10 +6,6 @@ import org.quartz.impl.StdSchedulerFactory;
 
 public class JobScheduler {
 
-
-    private String jobClass;
-
-
     public JobDetail createJobDetail() throws SchedulerException {
         JobDetail result = JobBuilder.newJob(QuartzJob.class).withIdentity("quartz_job").build();
         result.getJobDataMap().put("job", new SpringJob());
