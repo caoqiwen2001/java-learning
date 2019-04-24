@@ -13,7 +13,7 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 本地加载配置文件
+ * 本地加载配置文件,通过责任链模式获取对应connection
  */
 public class FilterManager {
 
