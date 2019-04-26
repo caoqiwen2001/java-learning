@@ -21,10 +21,9 @@ public class RemoveElement {
         nd2.next = nd3;
         nd3.next = nd4;
         nd4.next = nd5;
-        IntersectionNode.ListNode result = removeElements(nd1, 3);
+        IntersectionNode.ListNode result = removeElemets1(nd1, 3);
         System.out.println("result has success");
     }
-
 
     /**
      * 递归删除
@@ -37,7 +36,6 @@ public class RemoveElement {
         if (head == null) {
             return null;
         }
-
         //递归调用
         IntersectionNode.ListNode res = removeElements(head.next, val);
         if (head.val == val) {
@@ -48,5 +46,28 @@ public class RemoveElement {
         }
     }
 
+    /**
+     * 非递归形式
+     *
+     * @param val
+     * @return
+     */
+    public static IntersectionNode.ListNode removeElemets1(IntersectionNode.ListNode head, int val) {
 
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
+        IntersectionNode.ListNode listNode = head;
+        if (head == null) {
+            return null;
+        }
+        while (listNode.next != null) {
+            if (listNode.next.val == val) {
+                listNode.next = listNode.next.next;
+            } else {
+                listNode = listNode.next;
+            }
+        }
+        return head;
+    }
 }

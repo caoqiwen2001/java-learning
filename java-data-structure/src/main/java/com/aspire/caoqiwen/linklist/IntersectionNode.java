@@ -64,7 +64,5 @@ public class IntersectionNode {
             headB = headB.next;
         }
         return headA;
-
     }
-
 }
