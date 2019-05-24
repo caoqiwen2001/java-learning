@@ -1,5 +1,6 @@
 package com.aspire.caoqiwen.hash;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Intersection {
@@ -14,6 +15,13 @@ public class Intersection {
 
     public static void main(String[] args) {
         System.out.println("hello world");
+        int[] arr = {1, 2, 3};
+        int[] arr1 = {2, 3, 4};
+        int[] result = intersection(arr, arr1);
+        System.out.println("hello word");
+
+
+
 
     }
 
