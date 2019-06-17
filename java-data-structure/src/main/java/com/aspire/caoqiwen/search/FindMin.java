@@ -34,7 +34,7 @@ public class FindMin {
             if (nums[middle] > nums[right]) {
                 left = middle + 1;
             } else {
-                right = middle ;
+                right = middle;
             }
         }
         return nums[left];
