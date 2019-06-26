@@ -56,6 +56,9 @@ public class PreorderTraversal {
 
     public static List<Integer> preorderTraversal(PreorderTraversal.TreeNode root) {
         List<Integer> list = new ArrayList<>();
+        if(root==null) {
+            return list;
+        }
         List<PreorderTraversal.TreeNode> nodelist = new LinkedList<>();
         nodelist.add(root);
         PreorderTraversal.TreeNode treeNode = null;

@@ -1,6 +1,7 @@
 package com.aspire.caoqiwen.tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -57,12 +58,22 @@ public class InorderTraversal {
     public static List<Integer> inorderTraversal(TreeNode root) {
 
         List<Integer> list = new ArrayList<>();
-        if (root == null) {
-            return null;
+        if(root==null) {
+            return list;
         }
-//        if ()
+        List<TreeNode> nodeList = new LinkedList<>();
+        while (true) {
+            while (root != null) {
+                ((LinkedList<TreeNode>) nodeList).push(root);
+                root = root.left;
+            }
+            if (nodeList.isEmpty()) {
+                return list;
+            }
+            root = ((LinkedList<TreeNode>) nodeList).pop();
+            list.add(root.data);
+            root = root.right;
 
-
-        return list;
+        }
     }
 }
