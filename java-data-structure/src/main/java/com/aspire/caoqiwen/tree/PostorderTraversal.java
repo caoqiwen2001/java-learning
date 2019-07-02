@@ -69,26 +69,6 @@ public class PostorderTraversal {
             }
         }
         return list;
-
-//        while (true) {
-//            while (root != null) {
-//                ((LinkedList<TreeNode>) nodeList).push(root);
-//                root = root.left;
-//            }
-//            if (nodeList.isEmpty()) {
-//                return list;
-//            }
-//            TreeNode node = ((LinkedList<TreeNode>) nodeList).peek();
-//            if (node.right != null) {
-//                root = node.right;
-//            } else {
-//                ((LinkedList<TreeNode>) nodeList).pop();
-//                list.add(node.data);
-//            }
-//            return list;
-//        }
-
-
     }
 
 }
