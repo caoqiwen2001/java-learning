@@ -58,7 +58,7 @@ public class InorderTraversal {
     public static List<Integer> inorderTraversal(TreeNode root) {
 
         List<Integer> list = new ArrayList<>();
-        if(root==null) {
+        if (root == null) {
             return list;
         }
         List<TreeNode> nodeList = new LinkedList<>();
@@ -73,7 +73,6 @@ public class InorderTraversal {
             root = ((LinkedList<TreeNode>) nodeList).pop();
             list.add(root.data);
             root = root.right;
-
         }
     }
 }

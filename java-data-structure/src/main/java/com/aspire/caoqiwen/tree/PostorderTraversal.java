@@ -1,11 +1,13 @@
 package com.aspire.caoqiwen.tree;
 
-import com.sun.org.apache.regexp.internal.REUtil;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+
+/*
+后续遍历
+ */
 public class PostorderTraversal {
 
     public static class TreeNode {
