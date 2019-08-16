@@ -13,7 +13,7 @@ public class Generate {
 
     public static void main(String[] args) {
         System.out.println("hello world");
-        List<List<Integer>> list = generate(5);
+        List<List<Integer>> list = generate(30);
         System.out.println("done");
     }
 
@@ -38,6 +38,5 @@ public class Generate {
         } else {
             return generate1(i - 1, j - 1) + generate1(i - 1, j);
         }
-
     }
 }
