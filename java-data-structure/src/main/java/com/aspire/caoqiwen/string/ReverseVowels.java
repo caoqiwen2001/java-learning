@@ -10,13 +10,12 @@ package com.aspire.caoqiwen.string;
 public class ReverseVowels {
 
     public static void main(String[] args) {
-        System.out.println("hello world");
         String ss = "hello";
         System.out.println(reverseVowels(ss));
     }
 
     /**
-     * 双指针法，判断是否原因字母
+     * 双指针法，判断是否元音字母
      *
      * @param s
      * @return
