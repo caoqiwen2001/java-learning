@@ -21,7 +21,7 @@ public class RemoveElement {
         nd2.next = nd3;
         nd3.next = nd4;
         nd4.next = nd5;
-        IntersectionNode.ListNode result = removeElemets1(nd1, 3);
+        IntersectionNode.ListNode result = removeElements(nd1, 3);
         System.out.println("result has success");
     }
 
